@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://b17tc4inueknq"]
+
+[ext_resource type="Script" path="res://machine.gd" id="1_muakj"]
+[ext_resource type="Texture2D" uid="uid://cdfwff65n6atj" path="res://breathtaking.png" id="2_3sbmi"]
+[ext_resource type="Texture2D" uid="uid://bhe4msl00x1yx" path="res://icon.svg" id="3_2k60n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2di84"]
+size = Vector2(162, 249)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk63p"]
+size = Vector2(126, 128)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_muakj")
+
+[node name="Breathtaking" type="Sprite2D" parent="."]
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("2_3sbmi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -86.5)
+shape = SubResource("RectangleShape2D_2di84")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -68.0
+offset_top = -98.0
+offset_right = 73.0
+offset_bottom = -40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ofisdjfoisjfoi
+"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Click me!"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = -77.0
+offset_top = -209.0
+offset_right = 76.0
+offset_bottom = -37.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 109)
+texture = ExtResource("3_2k60n")
+
+[node name="TeleportArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea"]
+position = Vector2(1, 109)
+shape = SubResource("RectangleShape2D_nk63p")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

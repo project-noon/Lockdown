@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccx46irf1ol5i"]
+
+[ext_resource type="PackedScene" uid="uid://yiffonrqukj5" path="res://p1.tscn" id="1_bx517"]
+[ext_resource type="Script" path="res://world.gd" id="1_ixqgk"]
+[ext_resource type="PackedScene" uid="uid://b17tc4inueknq" path="res://machine.tscn" id="2_xar4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ct65u"]
+size = Vector2(1299, 71)
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_ixqgk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_bx517")]
+position = Vector2(-114, -213)
+control_name = "steve"
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("1_bx517")]
+position = Vector2(-76, -47)
+control_name = "a1"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-8, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-23.5, 345)
+shape = SubResource("RectangleShape2D_ct65u")
+
+[node name="Node2D" parent="." instance=ExtResource("2_xar4g")]
+position = Vector2(262, 132)
