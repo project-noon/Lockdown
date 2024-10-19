@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b17tc4inueknq"]
+[gd_scene load_steps=7 format=3 uid="uid://b17tc4inueknq"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_muakj"]
 [ext_resource type="Texture2D" uid="uid://cdfwff65n6atj" path="res://breathtaking.png" id="2_3sbmi"]
@@ -9,6 +9,9 @@ size = Vector2(162, 249)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk63p"]
 size = Vector2(126, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3vpu"]
+size = Vector2(598, 20)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_muakj")
@@ -54,6 +57,17 @@ texture = ExtResource("3_2k60n")
 position = Vector2(1, 109)
 shape = SubResource("RectangleShape2D_nk63p")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 34)
+shape = SubResource("RectangleShape2D_c3vpu")
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="TeleportArea" to="." method="_on_teleport_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

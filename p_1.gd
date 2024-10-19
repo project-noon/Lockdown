@@ -63,6 +63,9 @@ func _on_mouse_entered():
 	moused_over = true
 	pass # Replace with function body.
 
+func die():
+	World.controllable.erase(self)
+	queue_free()
 
 func _on_meander_timer_timeout():
 	if abs(position.x - goal.x) < 5:

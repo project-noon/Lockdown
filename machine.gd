@@ -1,13 +1,13 @@
 extends Node2D
 
-# cool comment!
-
 
 var mouseover = false
 var display_something = false
 @onready var display_menu := $VBoxContainer
 @onready var selection_list_menu := $VBoxContainer2
 var attached_controllable: Controllable
+@onready var teleportArea := $TeleportArea
+@onready var waitTime := $Timer
 
 func _ready():
 	selection_list_menu.visible = false
@@ -57,4 +57,18 @@ func _on_button_pressed():
 	
 	
 	
+	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	for body in teleportArea.get_overlapping_bodies():
+		if body is Controllable:
+			body.position.y -= 100
+			break
+	pass # Replace with function body.
+
+
+func _on_teleport_area_body_entered(body: Node2D) -> void:
+	if body is Controllable:
+		waitTime.start(2)
 	pass # Replace with function body.
