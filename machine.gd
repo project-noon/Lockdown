@@ -1,5 +1,8 @@
 extends Node2D
 
+# cool comment!
+
+
 var mouseover = false
 var display_something = false
 @onready var display_menu := $VBoxContainer
