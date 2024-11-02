@@ -1,4 +1,6 @@
+class_name Machine
 extends Node2D
+
 
 
 var mouseover = false
@@ -8,6 +10,8 @@ var display_something = false
 var attached_controllable: Controllable
 @onready var teleportArea := $TeleportArea
 @onready var waitTime := $Timer
+@onready var teleportDest := $TeliportDest
+@onready var effectArea := $Area2D
 
 func _ready():
 	selection_list_menu.visible = false
@@ -28,6 +32,12 @@ func _process(delta):
 		if Input.is_action_just_pressed("select"):
 			display_something = false
 			selection_list_menu.visible = false
+			
+	if waitTime.is_stopped():
+		for body in teleportArea.get_overlapping_bodies():
+			if body is Controllable:
+				waitTime.start(2)
+			
 	display_menu.visible = display_something
 
 
@@ -63,7 +73,9 @@ func _on_button_pressed():
 func _on_timer_timeout() -> void:
 	for body in teleportArea.get_overlapping_bodies():
 		if body is Controllable:
-			body.position.y -= 100
+			body.position = teleportDest.global_position
+			body.change_goal(teleportDest.global_position)
+			#body.meander = false
 			break
 	pass # Replace with function body.
 

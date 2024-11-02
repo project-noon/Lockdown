@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfr8dewwjyof8"]
+
+[ext_resource type="PackedScene" uid="uid://b17tc4inueknq" path="res://machine.tscn" id="1_2oksa"]
+[ext_resource type="Script" path="res://breathtaking.gd" id="2_efvu2"]
+
+[node name="Node2D" instance=ExtResource("1_2oksa")]
+script = ExtResource("2_efvu2")
+
+[node name="deathTimer" type="Timer" parent="." index="9"]

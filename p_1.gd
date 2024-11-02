@@ -9,7 +9,8 @@ var goal_original: Vector2
 var previous_goal: Vector2
 var selected = false
 var moused_over = false
-
+var meander = true
+@onready var area := $Area2D
 @export var control_name = ""
 
 func change_goal(new_goal: Vector2):
@@ -67,10 +68,18 @@ func die():
 	World.controllable.erase(self)
 	queue_free()
 
+
 func _on_meander_timer_timeout():
-	if abs(position.x - goal.x) < 5:
-		var prop_goal = position + Vector2(randf_range(-50,50),randf_range(-10,10))
-		#var difference_x = prop_goal.x - goal_original.x
-		
-		if abs(prop_goal.x - goal_original.x) < 50:
-			goal = prop_goal
+	
+	var overlappingMachine = false
+	
+	for body in area.get_overlapping_areas():
+		if body.get_parent() is Machine:
+			overlappingMachine = true
+	if meander and not overlappingMachine:
+		if abs(position.x - goal.x) < 5:
+			var prop_goal = position + Vector2(randf_range(-50,50),randf_range(-10,10))
+			#var difference_x = prop_goal.x - goal_original.x
+			
+			if abs(prop_goal.x - goal_original.x) < 50:
+				goal = prop_goal
