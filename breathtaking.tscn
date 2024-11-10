@@ -3,7 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://b17tc4inueknq" path="res://machine.tscn" id="1_2oksa"]
 [ext_resource type="Script" path="res://breathtaking.gd" id="2_efvu2"]
 
-[node name="Node2D" instance=ExtResource("1_2oksa")]
+[node name="breathtaking" instance=ExtResource("1_2oksa")]
 script = ExtResource("2_efvu2")
 
+[node name="Area2D" parent="." index="1"]
+collision_mask = 3
+
 [node name="deathTimer" type="Timer" parent="." index="9"]
+
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

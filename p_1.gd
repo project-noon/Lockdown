@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 
 @onready var selected_sprite := $SelectedSprite
+@onready var sprite := $Sprite2D
 var goal: Vector2
 var goal_original: Vector2
 var previous_goal: Vector2
@@ -12,6 +13,7 @@ var moused_over = false
 var meander = true
 @onready var area := $Area2D
 @export var control_name = ""
+var dead:= false
 
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
@@ -38,9 +40,10 @@ func _physics_process(delta):
 		velocity = Vector2(0,0)
 		#agent.target_position = position + Vector2(randf_range(-10,10),randf_range(-10,10))
 	else:
-		var dest = goal
-		var dir = dest - position
-		velocity.x += dir.normalized().x * delta * 50
+		if not dead:
+			var dest = goal
+			var dir = dest - position
+			velocity.x += dir.normalized().x * delta * 50
 		#move_toward(position,agent.get_next_path_position(),delta)
 		#position.x = move_toward(position.x,dest.x,delta*100)
 		#position.y = move_toward(position.y,dest.y,delta*100)
@@ -65,8 +68,13 @@ func _on_mouse_entered():
 	pass # Replace with function body.
 
 func die():
-	World.controllable.erase(self)
-	queue_free()
+	#World.controllable.erase(self)
+	#queue_free()
+	dead = true
+	sprite.rotate(rad_to_deg(90))
+	
+	
+	pass
 
 
 func _on_meander_timer_timeout():
@@ -76,7 +84,7 @@ func _on_meander_timer_timeout():
 	for body in area.get_overlapping_areas():
 		if body.get_parent() is Machine:
 			overlappingMachine = true
-	if meander and not overlappingMachine:
+	if meander and not overlappingMachine and not dead:
 		if abs(position.x - goal.x) < 5:
 			var prop_goal = position + Vector2(randf_range(-50,50),randf_range(-10,10))
 			#var difference_x = prop_goal.x - goal_original.x

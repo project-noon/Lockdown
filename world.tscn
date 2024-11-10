@@ -27,5 +27,5 @@ position = Vector2(-8, -2)
 position = Vector2(-23.5, 345)
 shape = SubResource("RectangleShape2D_ct65u")
 
-[node name="Node2D" parent="." instance=ExtResource("3_sb2wn")]
-position = Vector2(292, 127)
+[node name="breathtaking" parent="." instance=ExtResource("3_sb2wn")]
+position = Vector2(290, 132)
