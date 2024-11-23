@@ -11,7 +11,7 @@ size = Vector2(386, 249)
 size = Vector2(126, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3vpu"]
-size = Vector2(598, 20)
+size = Vector2(392, 20)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_muakj")
@@ -64,7 +64,7 @@ wait_time = 5.0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 34)
+position = Vector2(99, 34)
 shape = SubResource("RectangleShape2D_c3vpu")
 
 [node name="TeliportDest" type="Node2D" parent="."]

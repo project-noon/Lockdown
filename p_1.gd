@@ -14,6 +14,10 @@ var meander = true
 @onready var area := $Area2D
 @export var control_name = ""
 var dead:= false
+var fortitude = 1
+var prudence = 1
+var temperence = 4
+var justice = 1
 
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
