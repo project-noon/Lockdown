@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c44ldhgreby32"]
+
+[ext_resource type="PackedScene" uid="uid://b17tc4inueknq" path="res://machine.tscn" id="1_bpqiu"]
+[ext_resource type="Texture2D" uid="uid://bgqfw755n501u" path="res://mirror.png" id="2_bak5i"]
+[ext_resource type="Script" path="res://mirror_of_another_world.gd" id="2_jq5xs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2aobi"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[node name="Node2D" instance=ExtResource("1_bpqiu")]
+script = ExtResource("2_jq5xs")
+
+[node name="Breathtaking" parent="." index="0"]
+skew = -0.279253
+texture = ExtResource("2_bak5i")
+
+[node name="Sprite2D" parent="." index="4"]
+texture = SubResource("CompressedTexture2D_2aobi")
+
+[node name="sanityTimer" type="Timer" parent="." index="10"]
+
+[connection signal="timeout" from="sanityTimer" to="." method="_on_sanity_timer_timeout"]

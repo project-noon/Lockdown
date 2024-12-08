@@ -16,8 +16,12 @@ var meander = true
 var dead:= false
 var fortitude = 1
 var prudence = 1
-var temperence = 4
+var temperence = 1
 var justice = 1
+var health = 1.0
+var sanity = 1.0
+var soul = 1.0
+var startingPos: Vector2
 
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
@@ -30,6 +34,7 @@ func go_back_goal():
 	goal_original = previous_goal
 
 func _ready():
+	startingPos = position
 	World.controllable.append(self)
 
 func _physics_process(delta):
@@ -60,6 +65,8 @@ func _physics_process(delta):
 
 func _process(delta):
 	selected_sprite.visible = selected
+	if health <= 0:
+		die()
 	pass
 
 func _on_mouse_exited():
@@ -75,7 +82,8 @@ func die():
 	#World.controllable.erase(self)
 	#queue_free()
 	dead = true
-	sprite.rotate(rad_to_deg(90))
+	if sprite.rotation == 0:
+		sprite.rotate(rad_to_deg(90))
 	
 	
 	pass
