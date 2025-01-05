@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccx46irf1ol5i"]
+[gd_scene load_steps=6 format=3 uid="uid://ccx46irf1ol5i"]
 
 [ext_resource type="PackedScene" uid="uid://yiffonrqukj5" path="res://p1.tscn" id="1_bx517"]
 [ext_resource type="Script" path="res://world.gd" id="1_ixqgk"]
 [ext_resource type="PackedScene" uid="uid://dfr8dewwjyof8" path="res://breathtaking.tscn" id="3_sb2wn"]
+[ext_resource type="PackedScene" uid="uid://c44ldhgreby32" path="res://mirror_of_another_world.tscn" id="4_3ef37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct65u"]
 size = Vector2(1299, 71)
@@ -29,3 +30,6 @@ shape = SubResource("RectangleShape2D_ct65u")
 
 [node name="breathtaking" parent="." instance=ExtResource("3_sb2wn")]
 position = Vector2(290, 132)
+
+[node name="Node2D" parent="." instance=ExtResource("4_3ef37")]
+position = Vector2(-491, 123)

@@ -34,6 +34,20 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_lfjul")
 
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -9.0
+offset_top = -32.0
+offset_right = 28.0
+offset_bottom = -9.0
+scale = Vector2(0.5, 0.5)
+text = "1984"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-20, -26, 20, -26)
+closed = true
+default_color = Color(0, 1, 1, 1)
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="MeanderTimer" to="." method="_on_meander_timer_timeout"]

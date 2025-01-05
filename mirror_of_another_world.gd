@@ -11,16 +11,19 @@ func _ready():
 func _process(delta):
 	
 	if sanityTimer.is_stopped():
+		
 		for body in effectArea.get_overlapping_bodies():
+			#print(body)
 			if body is Controllable:
+				print("started")
 				sanityTimer.start(1)
-	
-	pass
+	super(delta)
 
 
 func _on_sanity_timer_timeout():
- 	for body in effectArea.get_overlapping_bodies():
-			if body is Controllable:
-				body.sanity -= 0.5
-				print(body.sanity)
+	print("timed")
+	for body in effectArea.get_overlapping_bodies():
+		if body is Controllable:
+			print("changed")
+			body.change_sanity(body.sanity - 0.003)
 	pass # Replace with function body.

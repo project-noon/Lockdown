@@ -22,6 +22,7 @@ var health = 1.0
 var sanity = 1.0
 var soul = 1.0
 var startingPos: Vector2
+@onready var sanityText := $Label
 
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
@@ -88,6 +89,9 @@ func die():
 	
 	pass
 
+func change_sanity(new_sanity):
+	sanity = new_sanity
+	sanityText.text = str(sanity)
 
 func _on_meander_timer_timeout():
 	
