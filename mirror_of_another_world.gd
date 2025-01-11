@@ -23,7 +23,7 @@ func _process(delta):
 func _on_sanity_timer_timeout():
 	print("timed")
 	for body in effectArea.get_overlapping_bodies():
-		if body is Controllable:
+		if body is Controllable and randi_range(1, 2) == 1:
 			print("changed")
-			body.change_sanity(body.sanity - 0.003)
+			body.change_sanity(body.sanity - 0.3)
 	pass # Replace with function body.

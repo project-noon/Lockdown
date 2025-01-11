@@ -93,9 +93,9 @@ func _on_teleport_area_body_entered(body: Node2D) -> void:
 func _on_stop_pressed():
 	
 	if attached_controllable != null:
-		if effectArea.get_overlapping_bodies().find(attached_controllable):
+		if effectArea.get_overlapping_bodies().find(attached_controllable) != -1:
 			attached_controllable.position = teleportArea.global_position
-			attached_controllable.change_goal(attached_controllable.startingPos)
-			attached_controllable = null
+		attached_controllable.change_goal(attached_controllable.startingPos)
+		attached_controllable = null
 	
 	pass # Replace with function body.

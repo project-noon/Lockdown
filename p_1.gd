@@ -19,10 +19,12 @@ var prudence = 1
 var temperence = 1
 var justice = 1
 var health = 1.0
-var sanity = 1.0
+var sanity = 0.0
 var soul = 1.0
 var startingPos: Vector2
 @onready var sanityText := $Label
+var move_speed = 90
+var max_sanity = sanity
 
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
@@ -53,7 +55,10 @@ func _physics_process(delta):
 		if not dead:
 			var dest = goal
 			var dir = dest - position
-			velocity.x += dir.normalized().x * delta * 50
+			var am = move_speed
+			if sanity <= 0: 
+				am = (move_speed * temperence + (max_sanity * 100))
+			velocity.x = dir.normalized().x * am
 		#move_toward(position,agent.get_next_path_position(),delta)
 		#position.x = move_toward(position.x,dest.x,delta*100)
 		#position.y = move_toward(position.y,dest.y,delta*100)
@@ -97,13 +102,18 @@ func _on_meander_timer_timeout():
 	
 	var overlappingMachine = false
 	
+	
 	for body in area.get_overlapping_areas():
 		if body.get_parent() is Machine:
 			overlappingMachine = true
 	if meander and not overlappingMachine and not dead:
 		if abs(position.x - goal.x) < 5:
+			
 			var prop_goal = position + Vector2(randf_range(-50,50),randf_range(-10,10))
+			if sanity <= 0.01:
+				prop_goal = position + Vector2(randf_range(-250,250),randf_range(-10,10))
+				print(control_name,prop_goal)
 			#var difference_x = prop_goal.x - goal_original.x
 			
-			if abs(prop_goal.x - goal_original.x) < 50:
+			if abs(prop_goal.x - goal_original.x) < 50 or true:
 				goal = prop_goal

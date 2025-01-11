@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://yiffonrqukj5"]
+
+[ext_resource type="Script" path="res://p_1.gd" id="1_neekm"]
+[ext_resource type="Texture2D" uid="uid://bhe4msl00x1yx" path="res://icon.svg" id="1_tp0kx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2g71q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfjul"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+input_pickable = true
+script = ExtResource("1_neekm")
+control_name = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2g71q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_tp0kx")
+
+[node name="SelectedSprite" type="Sprite2D" parent="."]
+position = Vector2(-3.57628e-07, -11)
+scale = Vector2(0.234375, 0.038125)
+texture = ExtResource("1_tp0kx")
+
+[node name="MeanderTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lfjul")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -9.0
+offset_top = -32.0
+offset_right = 28.0
+offset_bottom = -9.0
+scale = Vector2(0.5, 0.5)
+text = "1984"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-20, -26, 20, -26)
+closed = true
+default_color = Color(0, 1, 1, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="MeanderTimer" to="." method="_on_meander_timer_timeout"]
