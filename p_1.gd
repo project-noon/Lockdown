@@ -2,7 +2,7 @@ class_name Controllable
 extends CharacterBody2D
 
 
-
+@onready var meander_timer := $MeanderTimer
 @onready var selected_sprite := $SelectedSprite
 @onready var sprite := $Sprite2D
 var goal: Vector2
@@ -19,7 +19,7 @@ var prudence = 1
 var temperence = 1
 var justice = 1
 var health = 1.0
-var sanity = 0.0
+var sanity = 1.0
 var soul = 1.0
 var startingPos: Vector2
 @onready var sanityText := $Label
@@ -43,7 +43,7 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("move") and selected:
 		change_goal(get_global_mouse_position())
-	if Input.is_action_just_pressed("select") && selected == false && moused_over:
+	if Input.is_action_just_pressed("select") && selected == false && moused_over && sanity > 0.01:
 		selected = true
 	if Input.is_action_just_pressed("select") && selected == true && not moused_over && not Input.is_action_pressed("multiSelect"):
 		selected = false
@@ -95,6 +95,9 @@ func die():
 	pass
 
 func change_sanity(new_sanity):
+
+	if new_sanity <= 0.0001:
+		meander_timer.wait_time = 0.5
 	sanity = new_sanity
 	sanityText.text = str(sanity)
 
@@ -104,7 +107,8 @@ func _on_meander_timer_timeout():
 	
 	
 	for body in area.get_overlapping_areas():
-		if body.get_parent() is Machine:
+		var p_machine = body.get_parent()
+		if p_machine is Machine and p_machine.attached_controllable == self:
 			overlappingMachine = true
 	if meander and not overlappingMachine and not dead:
 		if abs(position.x - goal.x) < 5:
