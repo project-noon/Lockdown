@@ -13,7 +13,11 @@ var attached_controllable: Controllable
 @onready var teleportDest := $TeliportDest
 @onready var effectArea := $Area2D
 @onready var stopButton := $stop
-
+var worktype = 1 # 1 is instict, 2 is insight, 3 is attachment, 4 is repression, 5 is psychology, 6 is special\
+var special = false
+@onready var scrollWorktypeL := $VBoxContainer/HBoxContainer/scrollWorktypeL
+@onready var scrollWorktypeR := $VBoxContainer/HBoxContainer/scrollWorktypeR
+@onready var worktypeName := $VBoxContainer/HBoxContainer/worktypeName
 
 
 func _ready():
@@ -98,4 +102,41 @@ func _on_stop_pressed():
 		attached_controllable.change_goal(attached_controllable.startingPos)
 		attached_controllable = null
 	
+	pass # Replace with function body.
+
+
+func _on_scroll_worktype_l_pressed():
+	worktype -=1
+	update_worktype_name()
+	pass # Replace with function body.
+
+func update_worktype_name(): 
+	if worktype <= 0:
+		if special == true:
+			worktype = 6
+		else:
+			worktype = 5
+	
+	if worktype >= 6:
+		if special == true && worktype >= 7:
+			worktype = 1
+		else:
+			worktype = 1
+	
+	if worktype == 1:
+		worktypeName.text = "instinct"
+	if worktype == 2: 
+		worktypeName.text = "insight"
+	if worktype == 3: 
+		worktypeName.text = "attachment"
+	if worktype == 4: 
+		worktypeName.text = "repression"
+	if worktype == 5: 
+		worktypeName.text = "psychology"
+	if worktype == 6: 
+		worktypeName.text = "special"
+
+func _on_scroll_worktype_r_pressed():
+	worktype +=1
+	update_worktype_name()
 	pass # Replace with function body.

@@ -26,6 +26,7 @@ var startingPos: Vector2
 var move_speed = 90
 var max_sanity = sanity
 
+
 func change_goal(new_goal: Vector2):
 	previous_goal = goal
 	goal = new_goal

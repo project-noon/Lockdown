@@ -43,6 +43,21 @@ text = "ofisdjfoisjfoi
 layout_mode = 2
 text = "Click me!"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="scrollWorktypeL" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "<-"
+
+[node name="worktypeName" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "literally 1985"
+
+[node name="scrollWorktypeR" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "->"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 offset_left = -77.0
 offset_top = -209.0
@@ -73,6 +88,7 @@ shape = SubResource("RectangleShape2D_c3vpu")
 position = Vector2(202, -3)
 
 [node name="stop" type="Button" parent="."]
+visible = false
 offset_left = -91.0
 offset_top = -213.0
 offset_right = 299.0
@@ -82,6 +98,8 @@ text = "STOP"
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/scrollWorktypeL" to="." method="_on_scroll_worktype_l_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/scrollWorktypeR" to="." method="_on_scroll_worktype_r_pressed"]
 [connection signal="body_entered" from="TeleportArea" to="." method="_on_teleport_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="stop" to="." method="_on_stop_pressed"]
