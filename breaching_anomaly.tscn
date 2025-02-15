@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkwpikxui3kvh"]
+
+[ext_resource type="Texture2D" uid="uid://b8x656rowauq" path="res://skeleton.png" id="1_3b88j"]
+[ext_resource type="Script" path="res://breaching_anomaly.gd" id="1_6fgvd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdwxo"]
+size = Vector2(214, 525)
+
+[node name="breaching_anomaly" type="CharacterBody2D"]
+script = ExtResource("1_6fgvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 38.5)
+shape = SubResource("RectangleShape2D_gdwxo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3b88j")
