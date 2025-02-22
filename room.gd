@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	debug_label.text = room_name + "\n" + str(get_room_content()) 
-	print(debug_label.text)
+	#print(debug_label.text)
 	pass
 
 func get_room_content():

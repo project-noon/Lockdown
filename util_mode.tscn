@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://duqi3pxmvcjif"]
+
+[ext_resource type="Script" path="res://util_mode.gd" id="1_35l0s"]
+
+[node name="Control" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_35l0s")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 377.0
+offset_bottom = 100.0
+placeholder_text = "Your text here"

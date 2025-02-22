@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccx46irf1ol5i"]
+[gd_scene load_steps=9 format=3 uid="uid://ccx46irf1ol5i"]
 
 [ext_resource type="PackedScene" uid="uid://yiffonrqukj5" path="res://p1.tscn" id="1_bx517"]
 [ext_resource type="Script" path="res://world.gd" id="1_ixqgk"]
 [ext_resource type="PackedScene" uid="uid://dfr8dewwjyof8" path="res://breathtaking.tscn" id="3_sb2wn"]
 [ext_resource type="PackedScene" uid="uid://c44ldhgreby32" path="res://mirror_of_another_world.tscn" id="4_3ef37"]
 [ext_resource type="PackedScene" uid="uid://dhu57bw8aodlp" path="res://room.tscn" id="5_t4c6p"]
+[ext_resource type="PackedScene" uid="uid://duqi3pxmvcjif" path="res://util_mode.tscn" id="6_qqhhl"]
+[ext_resource type="PackedScene" uid="uid://bkwpikxui3kvh" path="res://breaching_anomaly.tscn" id="7_82hk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct65u"]
 size = Vector2(1299, 71)
@@ -37,3 +39,12 @@ position = Vector2(-491, 123)
 
 [node name="room" parent="." instance=ExtResource("5_t4c6p")]
 scale = Vector2(75, 35)
+
+[node name="Control" parent="." instance=ExtResource("6_qqhhl")]
+offset_left = -521.0
+offset_top = -235.0
+offset_right = -428.0
+offset_bottom = -152.0
+
+[node name="breaching_anomaly" parent="." instance=ExtResource("7_82hk4")]
+position = Vector2(88, -30)
