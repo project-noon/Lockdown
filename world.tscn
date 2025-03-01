@@ -47,4 +47,4 @@ offset_right = -428.0
 offset_bottom = -152.0
 
 [node name="breaching_anomaly" parent="." instance=ExtResource("7_82hk4")]
-position = Vector2(88, -30)
+position = Vector2(94, 136)

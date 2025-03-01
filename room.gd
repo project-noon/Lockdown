@@ -13,6 +13,9 @@ func _ready():
 func _process(delta):
 	debug_label.text = room_name + "\n" + str(get_room_content()) 
 	#print(debug_label.text)
+	for body in room_area.get_overlapping_bodies():
+		if body is BreachingAnomaly:
+			body.room = self
 	pass
 
 func get_room_content():

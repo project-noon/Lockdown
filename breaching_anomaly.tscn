@@ -4,14 +4,16 @@
 [ext_resource type="Script" path="res://breaching_anomaly.gd" id="1_6fgvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdwxo"]
-size = Vector2(214, 525)
+size = Vector2(109, 175)
 
 [node name="breaching_anomaly" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_6fgvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, 38.5)
+position = Vector2(1, 4)
 shape = SubResource("RectangleShape2D_gdwxo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3025, 0.310833)
 texture = ExtResource("1_3b88j")
